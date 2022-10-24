@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Simple Dictionary</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/navbar.css">
+        <link rel="stylesheet" type="text/css" href="css/Popup.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <!-- CSS only -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="css/login.css">
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+                crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+        <div class="topnav">
+           <a id="btnHome">
+               <img src="assets/images/logo.jpeg" alt="Avatar" class="image">
+           </a>
+            <a id="btnLogin" class="login">Login</a>
+            <a id="btnHistory" class="history">History</a>
+            <a id="btnCart" class="cart" style="background-color: #203d77">
+                <img src="assets/images/cart1.jpg" alt="Avatar" class="image">
+            </a>
+        </div>
+
+        <span id="login-view" style="display: none">
+             <div class="sMainParent">
+                  <div class="sLeftSide">
+                     <img src="./img/loginBackground.jpg" alt="Background Image">
+                     <div class="sTitleContainer">
+                        <span class="sLeftMainHeading">LOGIN</span>
+                        <span class="sLeftSubHeading">Welcome Back! Login your account to place a order.</span>
+                     </div>
+                  </div>
+                  <div class="sRightSide">
+                     <div class="sSignupForm">
+                        <div class="sDualInputGroup">
+                           <div class="mb-3 mlCustom">
+                              <label for="lUsernameField" class="form-label fontFace">Username</label>
+                              <input type="text" class="form-control" id="lUsernameField" placeholder="At least 4 characters.">
+                           </div>
+
+                           <div class="mb-3">
+                              <label for="lPasswordField" class="form-label fontFace">Password</label>
+                              <input type="password" class="form-control" id="lPasswordField" placeholder="">
+                           </div>
+                        </div>
+                        <div class="sSubmitButtonParent">
+                           <button class="btn sBtn1" onclick="signupButtonClicked()">Login</button>
+                           <button class="btn sBtn2">Cancel</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+        </span>
+
+        <span id="first-view">
+           <div class="bg-image" style="height: 40vh"></div>
+
+           <div class="bg-text" style="border-radius: 20px">
+               <h1 style="padding-bottom: 20px">THE P&S DRUG STORE</h1>
+               <form method="post" action="dictionary.jsp">
+                   <label>
+                        <input type="text" id="txtMedicalDesc" style="border-radius: 20px; color: black" name="search" placeholder="Enter Medical Description: "/>
+                    </label>
+                    <input class="btn" id="btnCheckMedical" style="font-size:1.2em; margin:0 0 5px 10px; background-color: #004ec6; color: #ffffff; height: 5vh" value="Search"/>
+               </form>
+           </div>
+
+          <h1 style="margin:4vh 0 0 47vw"> Search Results</h1>
+
+           <div class="container" style="margin-top: 10px; height: 40vh">
+               <div style="overflow: auto; height: 30vh">
+                <table id="tblDrugs" class="table table-light table-hover" style="width: 75vw;font-size: 1.5em; margin:2vh 0 0 5vw;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Code</th>
+                            <th scope="col">Item Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Availability</th>
+                            <th scope="col">Expire Date</th>
+                            <th scope="col" style="width: 2vw">Cart</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tBodyDrugs">
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Panadol</td>
+                            <td>2mg </td>
+                            <td>8</td>
+                            <td>2</td>
+                            <td>16</td>
+                            <td>
+                                <button style="border: none">
+                                   <i class="bi bi-bag-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Panadol</td>
+                            <td>2mg </td>
+                            <td>8</td>
+                            <td>2</td>
+                            <td>16</td>
+                            <td>
+                                <button style="border: none">
+                                    <i class="bi bi-bag-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Panadol</td>
+                            <td>2mg </td>
+                            <td>8</td>
+                            <td>2</td>
+                            <td>16</td>
+                            <td>
+                                <button style="border: none">
+                                   <i class="bi bi-bag-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Panadol</td>
+                            <td>2mg </td>
+                            <td>8</td>
+                            <td>2</td>
+                            <td>16</td>
+                            <td>
+                                <button style="border: none">
+                                   <i class="bi bi-bag-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+           </div>
+       </span>
+
+        <span style="display: none" id="second-view">
+             <div style="overflow: auto; height: 60vh">
+                <table class="table table-light table-hover" style="width: 80vw;font-size: 1.5em; margin:5vh 0 0 10vw;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Code</th>
+                            <th scope="col">Item Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                            <th scope="col" style="width: 2vw">Bin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Panadol</td>
+                        <td>2mg </td>
+                        <td>8</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>
+                            <button style="border: none">
+                                <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Panadol</td>
+                        <td>2mg </td>
+                        <td>8</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>
+                            <button style="border: none">
+                                <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Panadol</td>
+                        <td>2mg </td>
+                        <td>8</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>
+                            <button style="border: none">
+                                <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Panadol</td>
+                        <td>2mg </td>
+                        <td>8</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>
+                            <button style="border: none">
+                                <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Panadol</td>
+                        <td>2mg </td>
+                        <td>8</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>
+                            <button style="border: none">
+                                <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Panadol</td>
+                        <td>2mg </td>
+                        <td>8</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>
+                            <button style="border: none">
+                                <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Panadol</td>
+                        <td>2mg </td>
+                        <td>8</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>
+                            <button style="border: none">
+                                <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Panadol</td>
+                        <td>2mg </td>
+                        <td>8</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>
+                            <button style="border: none">
+                                <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Panadol</td>
+                        <td>2mg </td>
+                        <td>8</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>
+                            <button style="border: none">
+                                <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Panadol</td>
+                        <td>2mg </td>
+                        <td>8</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>
+                            <button style="border: none">
+                                <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Panadol</td>
+                        <td>2mg </td>
+                        <td>8</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>
+                            <button style="border: none">
+                                <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="height: 5vh; width: 8vw; border-bottom:2px solid black; margin:2vh 0 0 79vw">
+                <h1>12000.00 </h1>
+            </div>
+            <div style="margin:2vh 0 0 79vw">
+                <button  id="myBtn" style="width: 8vw; height: 6vh; font-size: 1.7em" type="button" class="btn btn-primary">Check-Out</button>
+            </div>
+            <div id="myModal" class="modal">
+                <div class="modal-content" style="font-size: 1.6em; margin:5vh 5vw 0 5vw; width: 80vw; border-radius: 20px">
+                    <span class="close">&times;</span>
+                    <h1 style="margin-left: 30vw">CheckOut The Cart </h1>
+                    <h3 style="margin: 5vh 0 2vh 2vh"><b>Customer Name</b> : Nimal Kumara</h3>
+                    <h3 style="margin: 2vh"><b>Customer Tel</b> :  0781728119</h3>
+                    <h3 style="margin: 2vh"><b>Customer Mail</b> : Nimal@gmail.com</h3>
+                    <h3 style="margin: 2vh"><b>Total Items</b>   : 8</h3>
+                    <h3 style="margin: 2vh"><b>Total Amount </b> : 12000.00</h3>
+                    <button type="button" style="margin: 5vh 0 0 65vw; width: 12vw; height: 6vh; font-size: 1.2em" class="btn btn-primary">
+                        Confirm Pay
+                    </button>
+                </div>
+            </div>
+        </span>
+
+        <span style="display: none" id="third-view">
+
+            <div class="bg-text" style="border-radius: 20px; margin-top: -10vh">
+               <form method="post" action="dictionary.jsp">
+                   <label>
+                        <input type="text" id="txtTranscriptCode" style="border-radius: 20px; color: black" name="search" placeholder="Enter Transcript Code: "/>
+                    </label>
+                    <input class="btn" id="btnSearchHistory" style="font-size:1.2em; margin:0 0 5px 10px; background-color: #004ec6; color: #ffffff; height: 5vh" value="Search"/>
+               </form>
+           </div>
+
+             <div style="overflow: auto; height: 60vh; margin-top: 13vh">
+                <table id="tblOrderHistory" class="table table-light table-hover" style="width: 80vw;font-size: 1.5em; margin:7vh 0 0 10vw;">
+                    <thead>
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Order Time</th>
+                        <th scope="col">Order Total</th>
+                        <th scope="col" style="width: 2vw">Bin</th>
+                    </tr>
+                    </thead>
+                    <tbody id="historyBody">
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>2022-10-11</td>
+                            <td>10:19 </td>
+                            <td>12000.00</td>
+                            <td>
+                                <button style="border: none">
+                                    <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>2022-10-11</td>
+                            <td>10:19 </td>
+                            <td>12000.00</td>
+                            <td>
+                                <button style="border: none">
+                                    <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>2022-10-11</td>
+                            <td>10:19 </td>
+                            <td>12000.00</td>
+                            <td>
+                                <button style="border: none">
+                                    <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>2022-10-11</td>
+                            <td>10:19 </td>
+                            <td>12000.00</td>
+                            <td>
+                                <button style="border: none">
+                                    <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>2022-10-11</td>
+                            <td>10:19 </td>
+                            <td>12000.00</td>
+                            <td>
+                                <button style="border: none">
+                                    <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">6</th>
+                            <td>2022-10-11</td>
+                            <td>10:19 </td>
+                            <td>12000.00</td>
+                            <td>
+                                <button style="border: none">
+                                    <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">7</th>
+                            <td>2022-10-11</td>
+                            <td>10:19 </td>
+                            <td>12000.00</td>
+                            <td>
+                                <button style="border: none">
+                                    <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">8</th>
+                            <td>2022-10-11</td>
+                            <td>10:19 </td>
+                            <td>12000.00</td>
+                            <td>
+                                <button style="border: none">
+                                    <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">9</th>
+                            <td>2022-10-11</td>
+                            <td>10:19 </td>
+                            <td>12000.00</td>
+                            <td>
+                                <button style="border: none">
+                                    <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">10</th>
+                            <td>2022-10-11</td>
+                            <td>10:19 </td>
+                            <td>12000.00</td>
+                            <td>
+                                <button style="border: none">
+                                    <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">11</th>
+                            <td>2022-10-11</td>
+                            <td>10:19 </td>
+                            <td>12000.00</td>
+                            <td>
+                                <button style="border: none">
+                                    <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </span>
+
+        <!-- ===============================================  -->
+        <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+                integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+        <script>
+
+            $("#btnLogin").click(function (){
+                $("#login-view").css("display","block");
+                $("#first-view").css("display","none");
+                $("#third-view").css("display","none");
+                $("#second-view").css("display","none");
+            });
+
+            $("#btnCart").click(function (){
+                $("#login-view").css("display","none");
+                $("#first-view").css("display","none");
+                $("#third-view").css("display","none");
+                $("#second-view").css("display","block");
+            });
+
+            $("#btnHome").click(function (){
+                $("#login-view").css("display","none");
+                $("#first-view").css("display","block");
+                $("#third-view").css("display","none");
+                $("#second-view").css("display","none");
+            });
+
+            $("#btnHistory").click(function (){
+                $("#login-view").css("display","none");
+                $("#first-view").css("display","none");
+                $("#third-view").css("display","block");
+                $("#second-view").css("display","none");
+            });
+
+            $(document).keydown(function(objEvent) {
+                if (objEvent.keyCode === 9) {  //tab pressed
+                    objEvent.preventDefault(); // stops its action
+                }
+            })
+
+            /* ================== Home Page JS ==================== */
+
+            $("#btnCheckMedical").click(function (){
+               searchDrug( $("#txtMedicalDesc").val());
+            });
+
+            function searchDrug(name) {
+                $("#tBodyDrugs").empty();
+                $.ajax({
+                    url: "....",
+                    method: "GET",
+                    success: function (resp) {
+                        for (const customer of resp.data) {
+                            let row = `<tr>
+                            <th scope="row">1</th>
+                            <td>Panadol</td>
+                            <td>2mg </td>
+                            <td>8</td>
+                            <td>2</td>
+                            <td>16</td>
+                            <td>
+                                <button style="border: none">
+                                    <i class="bi bi-bag-check"></i>
+                                </button>
+                            </td>
+                        </tr>`;
+                            $("#tblDrugs").append(row);
+                        }
+                    }
+                });
+            }
+
+            function loadAllDrugs() {
+                $("#tBodyDrugs").empty();
+                $.ajax({
+                    url: "....",
+                    method: "GET",
+                    success: function (resp) {
+                        for (const customer of resp.data) {
+                            let row = `<tr>
+                            <th scope="row">1</th>
+                            <td>Panadol</td>
+                            <td>2mg </td>
+                            <td>8</td>
+                            <td>2</td>
+                            <td>16</td>
+                            <td>
+                                <button style="border: none">
+                                    <i class="bi bi-bag-check"></i>
+                                </button>
+                            </td>
+                        </tr>`;
+                            $("#tblDrugs").append(row);
+                        }
+                    }
+                });
+            }
+
+            /* ================== History Page JS ==================== */
+
+            $("#btnSearchHistory").click(function (){
+                searchDrug( $("#txtTranscriptCode").val());
+            });
+
+            function searchHistory(name) {
+                $("#historyBody").empty();
+                $.ajax({
+                    url: "....",
+                    method: "GET",
+                    success: function (resp) {
+                        for (const customer of resp.data) {
+                            let row = ` <tr>
+                            <th scope="row">11</th>
+                            <td>2022-10-11</td>
+                            <td>10:19 </td>
+                            <td>12000.00</td>
+                            <td>
+                                <button style="border: none">
+                                    <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                                </button>
+                            </td>
+                        </tr>`;
+                            $("#tblOrderHistory").append(row);
+                        }
+                    }
+                });
+            }
+
+            function loadHistory() {
+                $("#historyBody").empty();
+                $.ajax({
+                    url: "....",
+                    method: "GET",
+                    success: function (resp) {
+                        for (const customer of resp.data) {
+                            let row = ` <tr>
+                            <th scope="row">11</th>
+                            <td>2022-10-11</td>
+                            <td>10:19 </td>
+                            <td>12000.00</td>
+                            <td>
+                                <button style="border: none">
+                                    <img style="width: 18px" src="https://img.icons8.com/external-kosonicon-solid-kosonicon/48/000000/external-bin-cleaning-kosonicon-solid-kosonicon.png" alt="ss"/>
+                                </button>
+                            </td>
+                        </tr>`;
+                            $("#tblOrderHistory").append(row);
+                        }
+                    }
+                });
+            }
+
+            /* ================== CheckOut Pop-up ================= */
+
+            var modal = document.getElementById("myModal");
+
+            var btn = document.getElementById("myBtn");
+
+            var span = document.getElementsByClassName("close")[0];
+
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+        </script>
+    </body>
+</html>

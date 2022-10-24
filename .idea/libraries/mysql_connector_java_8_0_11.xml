@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="mysql-connector-java-8.0.11">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../JavaEE_POS_v.1.0.1/myPOS/lib/mysql-connector-java-8.0.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JavaEE_POS_v.1.0.1/myPOS/lib/javax.json-api-1.1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JavaEE_POS_v.1.0.1/myPOS/lib/javax.json-1.1.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src" />
+    </SOURCES>
+  </library>
+</component>

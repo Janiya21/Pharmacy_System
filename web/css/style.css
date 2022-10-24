@@ -1,0 +1,53 @@
+body, html {
+    height: 100%;
+}
+input[type=text] {
+    width: 300px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 12px 10px 12px 10px;
+}
+#submit {
+    border-radius: 2px;
+    padding: 10px 32px;
+    font-size: 16px;
+}
+
+.bg-image {
+    background-image: url('../assets/images/medical1.jpg');
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    height: 40%;
+    background-position: center;
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+}
+
+.bg-text {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+.medRow{
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.medCol{
+    display: inline-block;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
