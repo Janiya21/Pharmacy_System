@@ -14,9 +14,8 @@ public class DbConnection {
         connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/onlinemedicinesystem",
                 "root",
-                "Janith20010121");
+                "1234");
     }
-
     public static  DbConnection getInstance() throws SQLException, ClassNotFoundException {
         if(dbConnection == null){
             dbConnection =  new DbConnection();
