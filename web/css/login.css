@@ -1,40 +1,129 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
 }
 
 .sMainParent{
-    height: 100%;
-    display: flex;
-    flex-direction: row;
+   height: calc(100vh - 8rem);
+   display: flex;
+   flex-direction: row;
 }
 
 .sLeftSide{
-    position: relative;
-    width: 36.5%;
+   position: relative;
+   width: 36.5%;
+   overflow: hidden;
 
 }
 .sLeftSide img{
-    height: 100%;
+   height: 100%;
+   transform: scale(1.5);
 }
 
 .sTitleContainer{
-    position: absolute;
-    bottom: 0;
-    background: rgba(10, 10, 10, 0.5);
-    width: 100%;
-    height: 10rem;
+   position: absolute;
+   bottom: 0;
+   background: rgba(10, 10, 10, 0.8);
+   width: 100%;
+   height: 15rem;
 }
 
 .sLeftMainHeading{
+   display: block;
+   color: white;
+   font-size: 4rem;
+   font-family: 'Inter';
+   font-weight: 600;
+   margin-left: 1rem;
+   margin-top: 1rem;
+}
+
+.sLeftSubHeading{
     display: block;
-    color: white;
-    font-size: 2rem;
-    font-family: 'Inter';
-    font-weight: 600;
-    margin-left: 1rem;
-    margin-top: 1rem;
+   color: white;
+   font-size: 2.1rem;
+   font-family: 'Inter';
+   font-weight: 300;
+   margin-left: 1rem;
+}
+
+.sRightSide{
+   height: 100%;
+   width: 65%;
+   position: relative;
+}
+
+.sSignupForm{
+   width: 70%;
+   height: 30%;   
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+   padding: 2rem;
+   border-radius: 15px;
+   border: 2px solid #f19502;
+   box-shadow: 1px 1px 12px 2px rgb(0 0 0 / 31%);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.sDualInputGroup{
+   display: flex;
+   flex-direction: row;
+
+}
+
+.mlCustom{
+   margin-right: 1.5rem;
+}
+
+.fontFace{
+   font-family: 'Inter';
+   font-weight: 700;
+   font-size: 0.9rem;
+   color: #484848;
+   margin-bottom: 0.2rem !important;
+}
+
+.sSubmitButtonParent{
+   display: inline-block;
+}
+
+.sSubmitButtonParent .sBtn1{
+   float: right;
+   margin-left: 0.5rem;
+   background-color: #f19502;
+   color: white;
+   font-weight: 600;
+   font-family: 'Inter';
+   font-size: 1rem;
+}
+
+.sSubmitButtonParent .sBtn2{
+   float: right;
+   margin-left: 0.5rem;
+   background-color: #495057;
+   color: white;
+   font-weight: 600;
+   font-family: 'Inter';
+   font-size: 1rem;
+}
+
+.inputError{
+   border-color: red;
+   border: 1px solid red;
+   background-color: #219ebc;
+}
+
+#lUsernameField:focus, #lPasswordField:focus{
+   border: 1px solid #f19502 !important;
+   box-shadow: 0 0 0 0.25rem rgba(241, 149, 2, 0.25);
 }
